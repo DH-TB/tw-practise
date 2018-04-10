@@ -1,9 +1,6 @@
 package com.thoughtworks.collection;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.List;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Reduce {
@@ -27,32 +24,54 @@ public class Reduce {
     }
 
     public double getOrderedMedian() {
-        throw new NotImplementedException();
+        int length = arrayList.size();
+        if (length % 2 == 0) {
+            return (arrayList.get(length / 2) + arrayList.get(length / 2 - 1)) / 2.0;
+        } else {
+            return arrayList.get(length / 2);
+        }
     }
 
     public int getFirstEven() {
-        throw new NotImplementedException();
+        return arrayList.stream().filter(i -> (i % 2) == 0).findFirst().orElse(-1);
     }
 
     public int getIndexOfFirstEven() {
-        throw new NotImplementedException();
+        return arrayList.stream().map((Integer i) -> {
+            if (i % 2 == 0) {
+                return arrayList.indexOf(i);
+            } else {
+                return -1;
+            }
+        }).filter(i -> i != -1).findFirst().orElse(-1);
     }
 
     public int getLastOdd() {
-        throw new NotImplementedException();
+        Collections.reverse(arrayList);
+        return arrayList.stream().filter(i -> (i % 2) == 1).findFirst().orElse(-1);
     }
 
     public int getIndexOfLastOdd() {
-        throw new NotImplementedException();
+        return arrayList.stream().map(i -> i % 2 == 1).collect(Collectors.toList()).size() - 1;
     }
 
-    public boolean isEqual(List<Integer> arrayList) {
-        return arrayList.stream().equals(this.arrayList);
+    public boolean isEqual(List<Integer> List) {
+        if(List.size() != arrayList.size()){
+            return false;
+        }
+        List = new ArrayList<>(List);
+        arrayList = new ArrayList<>(arrayList);
+        return arrayList.equals(List);
     }
 
-    //实现接口SingleLink，然后再此函数内使用
-    public Double getMedianInLinkList(SingleLink singleLink) {
-        throw new NotImplementedException();
+    public double getMedianInLinkList(SingleLink<Integer> singleLink) {
+        arrayList.stream().forEach(i -> singleLink.addTailPointer(i));
+        int length = arrayList.size();
+        if (length % 2 == 0) {
+            return (singleLink.getNode(length / 2) + singleLink.getNode(length / 2 + 1)) / 2.0;
+        } else {
+            return singleLink.getNode(length / 2);
+        }
     }
 
 

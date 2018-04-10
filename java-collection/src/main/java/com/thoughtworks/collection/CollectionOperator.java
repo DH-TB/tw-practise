@@ -1,8 +1,5 @@
 package com.thoughtworks.collection;
 
-import com.sun.tools.javac.util.ArrayUtils;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +46,6 @@ public class CollectionOperator {
         for (int i : array) {
             if (i % 2 == 0) {
                 resultList.add(i);
-
             }
         }
         return resultList;
@@ -60,6 +56,7 @@ public class CollectionOperator {
     }
 
     public List<Integer> popCommonElement(int[] firstArray, int[] secondArray) {
+
         List<Integer> resultList = new ArrayList<>();
         for (int i : firstArray) {
             if (IntStream.of(secondArray).anyMatch(x -> x == i)) {
@@ -73,11 +70,7 @@ public class CollectionOperator {
         List<Integer> result = Arrays.asList(firstArray);
         List<Integer> resultList = new ArrayList<>();
         resultList.addAll(result);
-        for (Integer i : secondArray) {
-            if (!result.contains(i)) {
-                resultList.add(i);
-            }
-        }
+        resultList.addAll(Arrays.stream(secondArray).filter(i->!result.contains(i)).collect(Collectors.toList()));
         return resultList;
     }
 }
