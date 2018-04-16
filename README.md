@@ -9,23 +9,23 @@
 
 #### 第三周作业
 - [Java编程基础 - 集合运算](https://github.com/DH-TB/tw-practise/tree/master/java-collection)
-- [Java面向对象编程]()
+- [Java面向对象编程](https://github.com/DH-TB/tw-practise/tree/master/java-oo)
 
 #### 第四周作业
-- [Java综合练习]()
+- Java综合练习
 - [TDD基础](https://github.com/DH-TB/tw-practise/tree/master/tdd-quiz)
 
 #### 第五周作业
 - [重构基础](https://github.com/DH-TB/tw-practise/tree/master/refactor-java)
-- [Unit Test基础]()
+- Unit Test基础
 
 #### 第六周作业
 - [Spring Boot基础](https://github.com/DH-TB/tw-practise/tree/master/spring-boot)
-- [Spring MVC基础]()
+- [Spring MVC基础](https://github.com/DH-TB/tw-practise/tree/master/spring-mvc)
 
 #### 第七周作业
 - [安装MySQL](https://github.com/DH-TB/tw-practise/tree/master/install-mysql)
-- [MySQL基础]()
+- MySQL基础
 - [Spring Data JPA](https://github.com/DH-TB/tw-practise/tree/master/spring-data-jpa)
 
 #### 第八周作业
