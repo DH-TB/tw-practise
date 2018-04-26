@@ -47,11 +47,11 @@ public class Receipt {
 
     private BigDecimal calculateSubtotal(List<Product> products, List<OrderItem> items) {
         BigDecimal subTotal = new BigDecimal(0);
-        for (Product product : products) {
+        products.stream().map(product -> {
             OrderItem item = findOrderItemByProduct(items, product);
             BigDecimal itemTotal = product.getPrice().multiply(new BigDecimal(item.getCount()));
-            subTotal = subTotal.add(itemTotal);
-        }
+            return subTotal.add(itemTotal);
+        });
         return subTotal;
     }
 }

@@ -14,6 +14,4 @@ public class Order {
         this.discounts = discounts;
         this.tax = new BigDecimal(0.1);
     }
-
-
 }

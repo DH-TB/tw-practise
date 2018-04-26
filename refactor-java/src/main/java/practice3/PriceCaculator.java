@@ -11,20 +11,28 @@ public class PriceCaculator {
     }
 
     public BigDecimal calculate() {
-        BigDecimal subTotal = new BigDecimal(0);
+        BigDecimal initSubTotal = new BigDecimal(0);
+        BigDecimal subTotal = subTotalOrderLineItem(initSubTotal);
+        BigDecimal discountSubTotal = discountSubTotalOrderLineItem(subTotal);
+        return getTax(discountSubTotal);
+    }
 
+    private BigDecimal subTotalOrderLineItem(BigDecimal subTotal) {
         for (OrderLineItem lineItem : order.orderLineItemList) {
             subTotal = subTotal.add(lineItem.getPrice());
         }
+        return subTotal;
+    }
 
+    private BigDecimal discountSubTotalOrderLineItem(BigDecimal subTotal) {
         for (BigDecimal discount : order.discounts) {
             subTotal = subTotal.subtract(discount);
         }
+        return subTotal;
+    }
 
+    private BigDecimal getTax(BigDecimal subTotal){
         BigDecimal tax = subTotal.multiply(this.order.tax);
-
-        BigDecimal grandTotal = subTotal.add(tax);
-
-        return grandTotal;
+        return subTotal.add(tax);
     }
 }
